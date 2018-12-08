@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zby.dao.ProductTypeMapper">
+    <resultMap id="BaseResultMap" type="com.zby.entity.ProductTypePO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,status
+    </sql>
+
+    <select id="findAll" resultMap="BaseResultMap" resultType="java.util.List">
+        select
+        <include refid="Base_Column_List" />
+        from t_product_type
+    </select>
+
+    <select id="selectByName" resultType="com.zby.entity.ProductTypePO">
+        select
+        <include refid="Base_Column_List" />
+        from t_product_type
+        where name=#{name,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectById" resultType="com.zby.entity.ProductTypePO">
+        select
+        <include refid="Base_Column_List" />
+        from t_product_type
+        where id=#{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insert">
+        insert into t_product_type
+        (name,status)
+        values
+        (#{name,jdbcType=VARCHAR},#{status,jdbcType=INTEGER})
+    </insert>
+
+    <update id="updateName">
+        update t_product_type
+        set name=#{name,jdbcType=VARCHAR}
+        where id=#{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateStatus">
+        update t_product_type
+        set status=#{status,jdbcType=INTEGER}
+        where id=#{id,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete
+        from t_product_type
+        where id=#{id,jdbcType=INTEGER}
+    </delete>
+</mapper>
