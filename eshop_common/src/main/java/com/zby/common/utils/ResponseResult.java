@@ -1,5 +1,7 @@
 package com.zby.common.utils;
 
+import com.zby.common.constant.ResponseStatusConstant;
+
 import java.io.Serializable;
 
 /**
@@ -18,6 +20,35 @@ public class ResponseResult implements Serializable {
 
     //返回数据
     private Object data;
+
+    public ResponseResult() {
+    }
+
+    public ResponseResult(int status, String message, Object data) {
+        this.status = status;
+        this.message = message;
+        this.data = data;
+    }
+
+    public static ResponseResult success(Object data){
+        return new ResponseResult(ResponseStatusConstant.SUCCESS,"success",data);
+    }
+
+    public static ResponseResult success(){
+        return new ResponseResult(ResponseStatusConstant.SUCCESS,"success",null);
+    }
+
+    public static ResponseResult success(String message){
+        return new ResponseResult(ResponseStatusConstant.SUCCESS,message,null);
+    }
+
+    public static ResponseResult failed(Object data){
+        return new ResponseResult(ResponseStatusConstant.SUCCESS,"failed",data);
+    }
+
+    public static ResponseResult failed(String message){
+        return new ResponseResult(ResponseStatusConstant.SUCCESS,message,null);
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

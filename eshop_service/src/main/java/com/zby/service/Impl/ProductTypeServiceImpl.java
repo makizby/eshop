@@ -1,8 +1,9 @@
 package com.zby.service.Impl;
 
+import com.zby.common.constant.ProductTypeStatusConstant;
 import com.zby.common.exception.ProductTypeException;
 import com.zby.dao.ProductTypeMapper;
-import com.zby.entity.ProductTypePO;
+import com.zby.entity.producttype.ProductTypePO;
 import com.zby.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,42 @@ public class ProductTypeServiceImpl implements ProductTypeService {
         }else {
             productTypeMapper.insert(name,status);
         }
+    }
+
+    @Override
+    public ProductTypePO findById(int id) {
+        ProductTypePO productTypePO = productTypeMapper.selectById(id);
+        return productTypePO;
+    }
+
+    @Override
+    public void update(int id, String name) throws ProductTypeException {
+        ProductTypePO productTypePO = productTypeMapper.selectByName(name);
+        if(productTypePO != null){
+            throw new ProductTypeException("已存在相关的商品类型！");
+        }else {
+            productTypeMapper.updateName(id,name);
+        }
+    }
+
+    @Override
+    public void delete(int id) {
+        productTypeMapper.deleteById(id);
+    }
+
+    @Override
+    public void changeStatus(int id) {
+        ProductTypePO productTypePO = productTypeMapper.selectById(id);
+        if(productTypePO.getStatus() == 1){
+            productTypeMapper.updateStatus(id, ProductTypeStatusConstant.PRODUCT_TYPE_DISENABLE);
+        }else {
+            productTypeMapper.updateStatus(id, ProductTypeStatusConstant.PRODUCT_TYPE_ENABLE);
+        }
+
+    }
+
+    @Override
+    public List<ProductTypePO> findAllEnable() {
+        return productTypeMapper.findAllEnable();
     }
 }

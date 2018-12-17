@@ -27,4 +27,10 @@
     <mvc:resources mapping="/iconfont/**" location="/WEB-INF/iconfont/"/>
     <mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/"/>
     <mvc:resources mapping="/images/**" location="/WEB-INF/images/"/>
+    <mvc:resources mapping="/layer/**" location="/WEB-INF/layer/"/>
+    <mvc:resources mapping="/upload/**" location="/WEB-INF/upload/"/>
+
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="1000000"/>
+    </bean>
 </beans>

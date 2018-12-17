@@ -1,7 +1,7 @@
 package com.zby.service;
 
 import com.zby.common.exception.ProductTypeException;
-import com.zby.entity.ProductTypePO;
+import com.zby.entity.producttype.ProductTypePO;
 
 import java.util.List;
 
@@ -21,5 +21,17 @@ public interface ProductTypeService {
      * 添加商品类型
      * @param name
      */
-    public void insert(String name,int status) throws ProductTypeException;
+    void insert(String name,int status) throws ProductTypeException;
+
+    ProductTypePO findById(int id);
+
+    void update (int id,String name) throws ProductTypeException;
+
+    void delete (int id);
+
+    void changeStatus(int id);
+
+    List<ProductTypePO> findAllEnable();
+
+
 }

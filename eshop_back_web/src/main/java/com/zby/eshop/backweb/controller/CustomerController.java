@@ -5,15 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author zhangbyi
- * @date 9:52 2018/12/7
+ * @date 20:50 2018/12/11
  */
 @Controller
-@RequestMapping("backweb/sys")
-public class BackWebController {
+@RequestMapping("backweb/customer/")
+public class CustomerController {
 
-    @RequestMapping("login")
-    public String login(){
-        //todo 用户信息校验
-        return "main2";
+    @RequestMapping("findAll")
+    public String findAll(){
+        return "customerManager";
     }
 }

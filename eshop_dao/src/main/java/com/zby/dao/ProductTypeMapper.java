@@ -1,6 +1,6 @@
 package com.zby.dao;
 
-import com.zby.entity.ProductTypePO;
+import com.zby.entity.producttype.ProductTypePO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -28,4 +28,6 @@ public interface ProductTypeMapper {
     int updateStatus(@Param("id")int id,@Param("status")int status);
 
     int deleteById(int id);
+
+    List<ProductTypePO> findAllEnable();
 }

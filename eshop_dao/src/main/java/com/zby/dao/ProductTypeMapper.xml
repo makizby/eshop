@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zby.dao.ProductTypeMapper">
-    <resultMap id="BaseResultMap" type="com.zby.entity.ProductTypePO">
+    <resultMap id="BaseResultMap" type="com.zby.entity.producttype.ProductTypePO">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="status" jdbcType="INTEGER" property="status" />
@@ -17,14 +17,14 @@
         from t_product_type
     </select>
 
-    <select id="selectByName" resultType="com.zby.entity.ProductTypePO">
+    <select id="selectByName" resultType="com.zby.entity.producttype.ProductTypePO">
         select
         <include refid="Base_Column_List" />
         from t_product_type
         where name=#{name,jdbcType=VARCHAR}
     </select>
 
-    <select id="selectById" resultType="com.zby.entity.ProductTypePO">
+    <select id="selectById" resultType="com.zby.entity.producttype.ProductTypePO">
         select
         <include refid="Base_Column_List" />
         from t_product_type
@@ -55,4 +55,11 @@
         from t_product_type
         where id=#{id,jdbcType=INTEGER}
     </delete>
+
+    <select id="findAllEnable" resultMap="BaseResultMap" resultType="java.util.List">
+        select
+        <include refid="Base_Column_List" />
+        from t_product_type
+        where status = 1
+    </select>
 </mapper>

@@ -1,4 +1,4 @@
-package com.zby.entity;
+package com.zby.entity.producttype;
 
 import java.io.Serializable;
 
