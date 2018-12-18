@@ -40,7 +40,7 @@
 		       </div>
 		       <div class="col-sm-2">
 		       	  <!-- 验证码 -->
-			      <img class="img-rounded" src="${pageContext.request.contextPath}/images/image.jpg" style="height: 32px; width: 70px;"/>
+			      <img class="img-rounded" src="${pageContext.request.contextPath}/backweb/code/image" style="height: 32px; width: 70px;"/>
 		       </div>
 		       <div class="col-sm-2">
 		         <button type="button" class="btn btn-link">看不清</button>
